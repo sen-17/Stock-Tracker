@@ -3,7 +3,7 @@ import os
 import yfinance
 from tabulate import tabulate
 
-file_path = "Stock-Tracker\portfolio.json"
+file_path = r"Stock-Tracker\portfolio.json"
 
 def add_stock(ticker , quantity , buy_price):
     if os.path.exists(file_path):
@@ -60,7 +60,7 @@ def calculate_portfolio_value():
 
     print(tabulate(all_data , headers = "firstrow", tablefmt="grid"))
     print(f"\nTotal Portfolio Value: ${total_value:.2f}")
-    print(f"Total Gain\Loss: {total_gain_loss:+.2f}")
+    print(f"Total Gain/Loss: {total_gain_loss:+.2f}")
         
 
 def main():
