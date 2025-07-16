@@ -7,10 +7,16 @@ def add_stock(ticker , quantity , buy_price):
     if os.path.exists(file_path):
         with open(file_path , mode='r') as file:
             data = json.load(file)
-        return data
     else:
+        data = {}
         with open(file_path , mode="w") as file:
-            json.dump({}, file)
+            json.dump(data, file)
+
+    data[ticker] = {"quantity" : quantity , "buy_price": buy_price}
+    with open(file_path , "w") as file:
+        json.dump(data, file , indent = 2)
+
+    return data
 
 def get_live_price(ticker):
     pass
@@ -36,3 +42,5 @@ def main():
         elif user_input == 2:
             calculate_portfolio_value()
 
+if __name__ == "__main__":
+    main()
