@@ -1,5 +1,6 @@
 import json
 import os
+import yfinance 
 
 file_path = "Stock-Tracker\portfolio.json"
 
@@ -19,7 +20,13 @@ def add_stock(ticker , quantity , buy_price):
     return data
 
 def get_live_price(ticker):
-    pass
+    try:
+        stock = yfinance.Ticker(ticker)
+        last_price = stock.fast_info['last_price']
+        return last_price
+    except Exception as e:
+        print(f"Error getting price for {ticker}: {e}")
+        return None
 
 def calculate_portfolio_value():
     pass
@@ -33,14 +40,17 @@ def main():
 
         user_input = int(input("Choose an option: "))
 
-        if user_input == 1:
-            ticker = input("Enter stock ticker (e.g., AAPL): ")
-            quantity = int(input("Quantity: "))
-            buy_price = float(input("Buy price: "))
-            add_stock(ticker , quantity, buy_price)
+        try:
+            if user_input == 1:
+                ticker = input("Enter stock ticker (e.g., AAPL): ")
+                quantity = int(input("Quantity: "))
+                buy_price = float(input("Buy price: "))
+                add_stock(ticker , quantity, buy_price)
 
-        elif user_input == 2:
-            calculate_portfolio_value()
+            elif user_input == 2:
+                calculate_portfolio_value()
+        except ValueError:
+            print("Please input a valid menu.")
 
 if __name__ == "__main__":
     main()
