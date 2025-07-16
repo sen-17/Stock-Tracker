@@ -2,7 +2,7 @@
 
 # CLI Stock Portfolio Tracker
 
-#### Video Demo: <URL HERE>
+#### Video Demo: [Watch the video on YouTube](https://youtu.be/YOfrgxBejiY)
 #### Description:
 This is a Final Project for CS50p, i built a command-line tool that helps users track and monitor a stock portfolio by adding stock tickers, quantities, and purchase prices. It fetches **live stock prices** using Yahoo Finance (via `yfinance`) and calculates:
 
